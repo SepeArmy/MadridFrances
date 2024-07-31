@@ -18,7 +18,7 @@ public class PlayerDataManager : MonoBehaviour
     checkpoint_hablarFanAntonio     = 6;
     checkpoint_hablarNinaBorde      = 7;
     checkpoint_robarAntonio         = 8;
-    checkpoint_darBigoteFanAntonio  = 9;
+    checkpoint_darBigoteFanAntonio  = 9;    
     */
 
 

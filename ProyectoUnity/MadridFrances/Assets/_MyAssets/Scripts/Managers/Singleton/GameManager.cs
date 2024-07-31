@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour
 
             // *****************************************************************
             case GameStates.MainMenu:
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
+                //Cursor.visible = true;
+                //Cursor.lockState = CursorLockMode.Confined;
                 MusicManager.THIS.MusicPlay(true, TransitionManager.THIS.GetActiveSceneIndex());
                 break;
             // *****************************************************************
