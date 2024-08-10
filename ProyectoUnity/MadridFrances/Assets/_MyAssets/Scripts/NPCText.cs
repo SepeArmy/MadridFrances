@@ -7,6 +7,11 @@ public class NPCText : MonoBehaviour
 {
 
     public string[] languageText;
+    public Sprite[] stfaces;
+    public Image faces;  
+    public Image face;
+    public Image faceProta;
+
 
     [SerializeField] GameObject dialogo;
 
@@ -26,7 +31,7 @@ public class NPCText : MonoBehaviour
 
     void Start()
     {
-            
+        stfaces = new Sprite[2];
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class NPCText : MonoBehaviour
 
     public void StartNPCText(int text)
     {
+        
         switch (text)
         {
             case 0:
@@ -60,8 +66,10 @@ public class NPCText : MonoBehaviour
         }
 
         dialogo.SetActive(true);  
+        face.gameObject.SetActive(true);
+        faceProta.gameObject.SetActive(true);
         typePhraseCoro = StartCoroutine(TypePhraseCoro());
-        SoundManager.THIS.PlaySound(15);
+        //SoundManager.THIS.PlaySound(15);
     }
 
 
@@ -70,16 +78,21 @@ public class NPCText : MonoBehaviour
         if (typePhraseCoro != null) AutoComplete_Npc_CurrentPhrase();
         else
         {
+            face.gameObject.SetActive(false);
+            faceProta.gameObject.SetActive(true);
+
             currentPhrase++;
             if (currentPhrase < languageText.Length)
             {
                 typePhraseCoro = StartCoroutine(TypePhraseCoro());
+                //faces.sprite = stfaces[currentPhrase];
             }
             else
             {
                 if (PlayerDataManager.THIS.checkpoints[1])
                 {
                     dialogo.SetActive(false);
+                    face.gameObject.SetActive(false);
                     GameManager.THIS.actualNPC = null;
                     GameManager.THIS.SetState(GameStates.Playing);
                     currentPhrase = 0;
@@ -91,6 +104,9 @@ public class NPCText : MonoBehaviour
                 }
                 else
                 {
+                    face.gameObject.SetActive(false);
+                    faceProta.gameObject.SetActive(false);
+
                     dialogo.SetActive(false);
                     GameManager.THIS.actualNPC = null;
                     GameManager.THIS.SetState(GameStates.Playing);
@@ -147,6 +163,7 @@ public class NPCText : MonoBehaviour
 
     public string[] text1 =
     {
+        
         "¡Ey!",
         "¡Eeey!",
         "Sí, tú, despierta.",
@@ -176,4 +193,6 @@ public class NPCText : MonoBehaviour
         "Sí, tú, despierta.",
         "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
     };
+
+
 }

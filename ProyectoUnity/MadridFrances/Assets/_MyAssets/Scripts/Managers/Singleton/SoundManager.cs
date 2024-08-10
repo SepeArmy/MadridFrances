@@ -27,6 +27,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(int index)
     {
-        audioSource.PlayOneShot (sounds[index]);
+        //audioSource.PlayOneShot (sounds[index]);
     }
 }

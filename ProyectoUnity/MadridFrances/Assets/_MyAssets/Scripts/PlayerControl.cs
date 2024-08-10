@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
@@ -59,7 +60,7 @@ public class PlayerControl : MonoBehaviour
 
     void MouseRaycast()
     {
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+        //Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         mouseText.gameObject.SetActive(false);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -206,6 +207,8 @@ public class PlayerControl : MonoBehaviour
         GameManager.THIS.SetState(GameStates.Playing);
         Rigidbody clone = Instantiate(macaronsFinal, transform.position + Vector3.up * 2, transform.rotation);
         clone.AddForce((palomas.position - transform.position) * 100);
+        inventario.GetComponent<Inventario>().objetos[0].SetActive(false);
+        //objectSelected.GetChild(0).gameObject.SetActive(false);
         PlayerDataManager.THIS.checkpoints[2] = false;
         PlayerDataManager.THIS.checkpoints[3] = true;
 
@@ -213,7 +216,8 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    
+    //Hay que hacer lo de que el objeto desaparezca del inventario con su uso también con el cromo y la pelota,
+    //pero para eso hay que ampliar la ruta a la niña.
 
     public void OnClickInventario()
     {

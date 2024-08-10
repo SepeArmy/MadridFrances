@@ -48,7 +48,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void SetState (GameStates newState)
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
 
             // *****************************************************************
             case GameStates.MainMenu:
-                //Cursor.visible = true;
+                //Cursor.visible = false;
                 //Cursor.lockState = CursorLockMode.Confined;
                 MusicManager.THIS.MusicPlay(true, TransitionManager.THIS.GetActiveSceneIndex());
                 break;
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
                 break;
             // *****************************************************************
             case GameStates.Inventory:
-                Cursor.lockState = CursorLockMode.Confined;
+                //  Cursor.lockState = CursorLockMode.Confined;
                 break;
             // *****************************************************************
             case GameStates.FinalLevel:
