@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject objectOptions;
     [SerializeField] GameObject soltarMacarons;
     [SerializeField] GameObject inventario;
+    [SerializeField] GameObject background;
     [SerializeField] GameObject HUD;
 
     [SerializeField] Texture2D arrowTexture;
@@ -223,7 +224,8 @@ public class PlayerControl : MonoBehaviour
     {
         if(GameManager.THIS.state == GameStates.Playing)
         {
-            inventario.SetActive(true);
+            //inventario.SetActive(true);
+            background.SetActive(true);
             HUD.SetActive(false);
             GameManager.THIS.SetState(GameStates.Inventory);
         }
@@ -232,7 +234,8 @@ public class PlayerControl : MonoBehaviour
 
     public void OnClickBack()
     {
-        inventario.SetActive(false);
+        //inventario.SetActive(false);
+        background.SetActive(false);
         HUD.SetActive(true);
         GameManager.THIS.SetState(GameStates.Playing);
     }

@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
             // *****************************************************************
             case GameStates.Playing:
                 if(MusicManager.THIS.audioSource.isPlaying) MusicManager.THIS.MusicPause();
-                MusicManager.THIS.MusicPlay(true, TransitionManager.THIS.GetActiveSceneIndex());
+                //MusicManager.THIS.MusicPlay(true, TransitionManager.THIS.GetActiveSceneIndex());
                     
 
                 break;

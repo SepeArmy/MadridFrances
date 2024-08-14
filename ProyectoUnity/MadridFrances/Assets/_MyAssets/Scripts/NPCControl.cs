@@ -13,15 +13,17 @@ public class NPCControl : MonoBehaviour
     public int checkpointNeeded;
 
     public GameObject jeanPierreAction;
+    public GameObject billete;
+    
     void Start()
     {
-
+        
     }
 
 
     void Update()
     {
-
+        
     }
 
     public void NPCAction()
@@ -36,19 +38,21 @@ public class NPCControl : MonoBehaviour
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(2);
+            
         }
         else if (PlayerDataManager.THIS.checkpoints[checkpointNeeded])
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(1);
             PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+            
         }
         else
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(0);
         }
-
+        ticket();
 
     }
 
@@ -59,4 +63,17 @@ public class NPCControl : MonoBehaviour
         GetComponent<NPCText>().StartNPCText(answer);
         PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;     
     }
+    public void ticket()
+    {
+        if ((PlayerDataManager.THIS.checkpoints[ownCheckpoint] == true) && (PlayerDataManager.THIS.checkpoints[checkpointNeeded] == true))
+        {
+            Debug.Log("Obtienes el billete");
+            Inventario.THIS.objetos[4].SetActive(true);
+            PlayerDataManager.THIS.checkpoints[12] = true;
+
+        }
+    }
+
+
+   
 }

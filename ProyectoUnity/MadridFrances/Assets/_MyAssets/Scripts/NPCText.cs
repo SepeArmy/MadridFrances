@@ -7,10 +7,10 @@ public class NPCText : MonoBehaviour
 {
 
     public string[] languageText;
-    public Sprite[] stfaces;
-    public Image faces;  
+    //public Sprite[] stfaces;
+    //public Image faces;  
     public Image face;
-    public Image faceProta;
+    //public Image faceProta;
 
 
     [SerializeField] GameObject dialogo;
@@ -31,7 +31,7 @@ public class NPCText : MonoBehaviour
 
     void Start()
     {
-        stfaces = new Sprite[2];
+        //stfaces = new Sprite[2];
     }
 
     // Update is called once per frame
@@ -67,7 +67,7 @@ public class NPCText : MonoBehaviour
 
         dialogo.SetActive(true);  
         face.gameObject.SetActive(true);
-        faceProta.gameObject.SetActive(true);
+        //faceProta.gameObject.SetActive(true);
         typePhraseCoro = StartCoroutine(TypePhraseCoro());
         //SoundManager.THIS.PlaySound(15);
     }
@@ -79,7 +79,7 @@ public class NPCText : MonoBehaviour
         else
         {
             face.gameObject.SetActive(false);
-            faceProta.gameObject.SetActive(true);
+            //faceProta.gameObject.SetActive(true);
 
             currentPhrase++;
             if (currentPhrase < languageText.Length)
@@ -105,7 +105,7 @@ public class NPCText : MonoBehaviour
                 else
                 {
                     face.gameObject.SetActive(false);
-                    faceProta.gameObject.SetActive(false);
+                    //faceProta.gameObject.SetActive(false);
 
                     dialogo.SetActive(false);
                     GameManager.THIS.actualNPC = null;

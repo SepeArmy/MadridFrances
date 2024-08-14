@@ -28,7 +28,7 @@ public class MusicManager : MonoBehaviour
 
     public void MusicPlay(bool _isLooping, int _index)
     {
-        audioSource.clip = musics[_index];
+        //audioSource.clip = musics[_index];
         audioSource.loop = _isLooping;
 
         audioSource.Play();
