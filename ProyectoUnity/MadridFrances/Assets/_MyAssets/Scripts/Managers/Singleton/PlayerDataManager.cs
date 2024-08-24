@@ -14,14 +14,22 @@ public class PlayerDataManager : MonoBehaviour
     checkpoint_cogerMacaronsJamon   = 2;
     checkpoint_tirarMacaronsJamon   = 3;
     checkpoint_hablarVieja          = 4;
-    checkpoint_cogerCromoCR7PSG     = 5;
-    checkpoint_hablarFanAntonio     = 6;
+    checkpoint_cogerCromoCR7PSG     = 5;------
+    checkpoint_cogerpelota          = 6;        
     checkpoint_hablarNinaBorde      = 7;
     checkpoint_robarAntonio         = 8;
     checkpoint_darBigoteFanAntonio  = 9;
     ckeckpoint_hablarAntonio        = 10;
     checkpoint_hablarAndaluz        = 11;
     checkpoint_billete              = 12;
+    checkpoint_HablarFan            = 13;
+    checkpoint_Niña                 = 14;
+    checkpoint_TirarPelota          = 15;
+    checkpoint_bigote               = 16;
+    checkpoint_cogerBigote          = 17;
+    
+
+
 
     */
 

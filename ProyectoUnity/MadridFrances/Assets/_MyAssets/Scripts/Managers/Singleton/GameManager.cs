@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager THIS;
 
     public Transform actualNPC;
+    public string nombreNPC;
 
     public GameStates state; // estado actual del juego
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] Text mouseText;
     [SerializeField] GameObject objectOptions;
+    [SerializeField] GameObject objectOptions2;
     [SerializeField] GameObject soltarMacarons;
+    [SerializeField] GameObject tirarPelota;
     [SerializeField] GameObject inventario;
+    [SerializeField] GameObject bigote;
     [SerializeField] GameObject background;
     [SerializeField] GameObject HUD;
 
@@ -22,8 +26,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Texture2D cursorTexture;
 
     [SerializeField] Rigidbody macaronsFinal;
+    [SerializeField] Rigidbody pelotaFinal;
+
 
     public Transform objectSelected;
+    public string nombreObjeto;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -91,11 +98,17 @@ public class PlayerControl : MonoBehaviour
             }
             else if (hit.transform.CompareTag("ChangeScene") && PlayerDataManager.THIS.checkpoints[4])
             {
-                Cursor.SetCursor(arrowTexture, Vector2.zero, CursorMode.ForceSoftware);
+                UnityEngine.Cursor.SetCursor(arrowTexture, Vector2.zero, CursorMode.ForceSoftware);
             }
             else if (hit.transform.CompareTag("Palomas"))
             {
                 mouseText.text = "PALOMAS";
+                mouseText.gameObject.SetActive(true);
+                mouseText.transform.position = Input.mousePosition + Vector3.right * 70;
+            }
+            else if (hit.transform.CompareTag("Pinceles"))
+            {
+                mouseText.text = hit.transform.GetComponentInParent<Object>().objectName;
                 mouseText.gameObject.SetActive(true);
                 mouseText.transform.position = Input.mousePosition + Vector3.right * 70;
             }
@@ -124,10 +137,13 @@ public class PlayerControl : MonoBehaviour
                 {
                     ClickNPC(hit.transform);
                 }
-
                 if (hit.transform.CompareTag("Object"))
                 {
                     ClickObject(hit.transform);
+                }
+                if (hit.transform.CompareTag("Pinceles"))
+                {
+                    ClickPinceles(hit.transform);
                 }
 
             }
@@ -144,6 +160,12 @@ public class PlayerControl : MonoBehaviour
                 soltarMacarons.SetActive(true);
                 
             }
+            else if (hit.transform.CompareTag("Pinceles") && PlayerDataManager.THIS.checkpoints[6])
+            {
+                GameManager.THIS.SetState(GameStates.ObjectOptions);
+                tirarPelota.transform.position = Input.mousePosition;
+                tirarPelota.SetActive(true);
+            }
         }
 
     }
@@ -157,17 +179,55 @@ public class PlayerControl : MonoBehaviour
 
     void ClickNPC(Transform npc)
     {
-        GameManager.THIS.actualNPC = npc.parent;
+        GameManager.THIS.actualNPC = npc.parent;//coge el npc
+        GameManager.THIS.nombreNPC = npc.name;
+        //print(npc.name);
         GameManager.THIS.actualNPC.GetComponent<NPCControl>().NPCAction();
         
     }
 
     void ClickObject(Transform _object)
     {
+        
+        objectSelected = _object;
+        nombreObjeto = _object.name;      
         GameManager.THIS.SetState(GameStates.ObjectOptions);
         objectOptions.transform.position = Input.mousePosition;
-        objectOptions.SetActive(true);
-        objectSelected = _object;
+        objectOptions2.transform.position = Input.mousePosition;
+
+        if (objectSelected.GetComponent<Object>().objectoCogible)
+        {
+                objectOptions.SetActive(true);
+        }
+          else
+          {
+                objectOptions2.SetActive(true);
+          }
+        
+        
+    }
+    void ClickPinceles(Transform _pinceles)
+    {
+        if (PlayerDataManager.THIS.checkpoints[6])
+        {
+           print ("Tirar pelota");
+        }
+        else
+        {
+            objectSelected = _pinceles;
+            GameManager.THIS.SetState(GameStates.ObjectOptions);
+            objectOptions2.transform.position = Input.mousePosition;
+            if (objectSelected.GetComponent<Object>().objectoCogible)
+            {
+                objectOptions.SetActive(true);
+            }
+            else
+            {
+                objectOptions2.SetActive(true);
+            }
+            //print("Te habla Antonio");
+        }
+
     }
 
     public void OnClickVer()
@@ -175,6 +235,8 @@ public class PlayerControl : MonoBehaviour
         objectSelected.GetComponent<ObjectText>().StartObjectText(0);
         GameManager.THIS.SetState(GameStates.ObjectChat);
         objectOptions.SetActive(false);
+        objectOptions2.SetActive(false);
+
     }
 
     public void OnClickCoger()
@@ -190,9 +252,19 @@ public class PlayerControl : MonoBehaviour
             if (objectSelected.GetComponent<Object>().objectID == 0)
             {
                 PlayerDataManager.THIS.checkpoints[2] = true;
+
             }
+            PlayerDataManager.THIS.checkpoints[objectSelected.GetComponent<Object>().owncheckpoint] = true;
+            objectSelected.GetComponent<BoxCollider>().enabled = false;
         }
-        
+                     
+    }
+    public void onClickNoCogerPelota()
+    { 
+        print("No puedes coger la pelota aun");
+        objectSelected.GetComponent<ObjectText>().StartObjectText(2);
+        GameManager.THIS.SetState(GameStates.ObjectChat);      
+        objectOptions2.SetActive(false);
     }
 
     public void OnClickFuera()
@@ -216,9 +288,31 @@ public class PlayerControl : MonoBehaviour
 
 
     }
+    public void OnCliclTirarPelota(Transform pinceles)
+    {
+        tirarPelota.SetActive(false);
+        GameManager.THIS.SetState(GameStates.Playing);
+        Rigidbody clone = Instantiate(pelotaFinal, transform.position + Vector3.up * 2, transform.rotation);
+        clone.AddForce((pinceles.position - transform.position) * 100);
+        inventario.GetComponent<Inventario>().objetos[3].SetActive(false);
+        PlayerDataManager.THIS.checkpoints[6] = false;
+        PlayerDataManager.THIS.checkpoints[16] = true;
+        //Destroy(clone.gameObject, 3f);
+        SpawnBigote();
 
-    //Hay que hacer lo de que el objeto desaparezca del inventario con su uso también con el cromo y la pelota,
-    //pero para eso hay que ampliar la ruta a la niña.
+    }
+     public void SpawnBigote()
+    {
+        if (PlayerDataManager.THIS.checkpoints[16])
+        {
+            //hacer que antonio haga la animación de agacharse y recoger los pinceles
+            print("Aparece bigote");
+            bigote.SetActive(true);
+            
+
+        }
+    }
+    
 
     public void OnClickInventario()
     {

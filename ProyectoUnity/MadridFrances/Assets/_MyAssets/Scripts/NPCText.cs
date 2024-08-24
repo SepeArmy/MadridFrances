@@ -12,6 +12,7 @@ public class NPCText : MonoBehaviour
     public Image face;
     //public Image faceProta;
 
+    public int npcCheckpoints; //alamacena el owncheckpoint
 
     [SerializeField] GameObject dialogo;
 
@@ -25,8 +26,9 @@ public class NPCText : MonoBehaviour
     public float textSlowSpeed;
 
     private void Awake()
-    { 
+    {
         //inputActions.Player_Ball.JumpBola.started += ctx => OnClickContinue();
+        
     }
 
     void Start()
@@ -126,7 +128,8 @@ public class NPCText : MonoBehaviour
 
             yield return new WaitForSeconds(textFastSpeed);
         }
-
+            //npcCheckpoints = GetComponent<NPCControl>().ownCheckpoint;
+           //PlayerDataManager.THIS.checkpoints[npcCheckpoints] = true;
         Stop_Npc_LineChat();
     }
 
@@ -136,6 +139,7 @@ public class NPCText : MonoBehaviour
         {
             StopCoroutine(typePhraseCoro);
             typePhraseCoro = null;
+            
         }
     }
 
