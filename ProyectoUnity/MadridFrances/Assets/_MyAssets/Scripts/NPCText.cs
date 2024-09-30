@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class NPCText : MonoBehaviour
 {
 
-    public string[] languageText;
-    //public Sprite[] stfaces;
-    //public Image faces;  
-    public Image face;
-    //public Image faceProta;
+    public string[] actualText;
+    public int[] actualTextouner;
+    
+    
+    //faceProta = 0; faceNPC = 1
+    public Image faceNPC;
+    public Image faceProta;
 
     public int npcCheckpoints; //alamacena el owncheckpoint
 
@@ -24,6 +26,21 @@ public class NPCText : MonoBehaviour
 
     public float textFastSpeed;
     public float textSlowSpeed;
+
+    public string[] text0;
+    public string[] text1;
+    public string[] text2;
+    public string[] text3;
+    public string[] text4;
+
+    public int[] textouner0;
+    public int[] textouner1;
+    public int[] textouner2;
+    public int[] textouner3;
+    public int[] textouner4;
+
+
+
 
     private void Awake()
     {
@@ -48,28 +65,33 @@ public class NPCText : MonoBehaviour
         switch (text)
         {
             case 0:
-                languageText = text0;
+                actualText = text0;
+                actualTextouner = textouner0;
                 break;
             case 1:
-                languageText = text1;
+                actualText = text1;
+                actualTextouner = textouner1;
                 break;
             case 2:
-                languageText = text2;
+                actualText = text2;
+                actualTextouner = textouner2;
+
                 break;
             case 3:
-                languageText = text3;
+                actualText = text3;
+                actualTextouner = textouner3;
                 break;
             case 4:
-                languageText = text4;
+                actualText = text4;
+                actualTextouner = textouner4;
                 break;
-
             default:
                 break;
         }
 
         dialogo.SetActive(true);  
-        face.gameObject.SetActive(true);
-        //faceProta.gameObject.SetActive(true);
+        faceNPC.gameObject.SetActive(true);
+        faceProta.gameObject.SetActive(true);
         typePhraseCoro = StartCoroutine(TypePhraseCoro());
         //SoundManager.THIS.PlaySound(15);
     }
@@ -80,11 +102,11 @@ public class NPCText : MonoBehaviour
         if (typePhraseCoro != null) AutoComplete_Npc_CurrentPhrase();
         else
         {
-            face.gameObject.SetActive(false);
+            faceNPC.gameObject.SetActive(false);
             //faceProta.gameObject.SetActive(true);
 
             currentPhrase++;
-            if (currentPhrase < languageText.Length)
+            if (currentPhrase < actualText.Length)
             {
                 typePhraseCoro = StartCoroutine(TypePhraseCoro());
                 //faces.sprite = stfaces[currentPhrase];
@@ -94,7 +116,7 @@ public class NPCText : MonoBehaviour
                 if (PlayerDataManager.THIS.checkpoints[1])
                 {
                     dialogo.SetActive(false);
-                    face.gameObject.SetActive(false);
+                    faceNPC.gameObject.SetActive(false);
                     GameManager.THIS.actualNPC = null;
                     GameManager.THIS.SetState(GameStates.Playing);
                     currentPhrase = 0;
@@ -103,10 +125,10 @@ public class NPCText : MonoBehaviour
                 {
                     GetComponent<NPCControl>().jeanPierreAction.SetActive(true);
                     currentPhrase = 0;
-                }
+                }                               
                 else
                 {
-                    face.gameObject.SetActive(false);
+                    faceNPC.gameObject.SetActive(false);
                     //faceProta.gameObject.SetActive(false);
 
                     dialogo.SetActive(false);
@@ -114,15 +136,45 @@ public class NPCText : MonoBehaviour
                     GameManager.THIS.SetState(GameStates.Playing);
                     currentPhrase = 0;
                 }
-               
+                if ((GameManager.THIS.nombreNPC == "Niña") && (currentPhrase == 0) && (actualText == text2))
+                {
+
+                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
+                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
+
+
+                }
+                if ((GameManager.THIS.nombreNPC == "Fan") && (currentPhrase == 0) && (actualText == text2))
+                {
+
+                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
+                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
+
+
+                }
+
             }
         }
     }
 
     IEnumerator TypePhraseCoro()
     {
+        //faceProta = 0; faceNPC = 1
+        if (actualTextouner[currentPhrase] == 0) 
+        {
+            faceProta.gameObject.SetActive(true);
+            faceNPC.gameObject.SetActive(false);
+
+        }
+        if (actualTextouner[currentPhrase] == 1)
+        {
+            faceProta.gameObject.SetActive(false);
+            faceNPC.gameObject.SetActive(true);
+
+        }
+
         phrase.text = string.Empty; // el texto con la frase del npc comienza vacio 
-        foreach (char currentCharacterOfCurrentPhrase in languageText[currentPhrase].ToCharArray())
+        foreach (char currentCharacterOfCurrentPhrase in actualText[currentPhrase].ToCharArray())
         {
             phrase.text += currentCharacterOfCurrentPhrase;
 
@@ -154,49 +206,10 @@ public class NPCText : MonoBehaviour
         phrase.text = string.Empty; // el texto con la frase del npc comienza vacio
 
         // PASO 3) se asigna al texto la frase actual
-        phrase.text = languageText[currentPhrase].ToString();
+        phrase.text = actualText[currentPhrase].ToString();
     }
 
-    public string[] text0 =
-    {
-        "¡Ey!",
-        "¡Eeey!",
-        "Sí, tú, despierta.",
-        "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
-    };
-
-    public string[] text1 =
-    {
-        
-        "¡Ey!",
-        "¡Eeey!",
-        "Sí, tú, despierta.",
-        "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
-    };
-
-    public string[] text2 =
-    {
-        "¡Ey!",
-        "¡Eeey!",
-        "Sí, tú, despierta.",
-        "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
-    };
-
-    public string[] text3 =
-    {
-        "¡Ey!",
-        "¡Eeey!",
-        "Sí, tú, despierta.",
-        "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
-    };
-
-    public string[] text4 =
-    {
-        "¡Ey!",
-        "¡Eeey!",
-        "Sí, tú, despierta.",
-        "Vaya, ya has vuelto en tí, me estaba empezando a preocupar.",
-    };
+    
 
 
 }

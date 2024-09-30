@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -28,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Rigidbody macaronsFinal;
     [SerializeField] Rigidbody pelotaFinal;
 
+    public GameObject bloqueo_Actual;
 
     public Transform objectSelected;
     public string nombreObjeto;
@@ -48,6 +50,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         Animations();
+        
     }
 
     void ClickInput()
@@ -63,6 +66,12 @@ public class PlayerControl : MonoBehaviour
         else if (GameManager.THIS.state == GameStates.ObjectChat)
         {
             objectSelected.GetComponent<ObjectText>().OnClickContinue();
+        }
+        else if (GameManager.THIS.state == GameStates.Blocking)
+        {
+            
+            bloqueo_Actual.GetComponent<BloqueoText>().OnClickContinue();
+
         }
     }
 
@@ -123,7 +132,7 @@ public class PlayerControl : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 200) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         { 
-            if (hit.transform.CompareTag("Floor"))
+            if (hit.transform.CompareTag("Floor")) //movimiento
             {
                 ClickFloor(hit.point);
             }
@@ -257,7 +266,12 @@ public class PlayerControl : MonoBehaviour
             PlayerDataManager.THIS.checkpoints[objectSelected.GetComponent<Object>().owncheckpoint] = true;
             objectSelected.GetComponent<BoxCollider>().enabled = false;
         }
-                     
+        if (nombreObjeto == "BIGOTE DE ANTUAN")
+        {
+            PlayerDataManager.THIS.checkpoints[17] = true;
+            
+
+        }
     }
     public void onClickNoCogerPelota()
     { 

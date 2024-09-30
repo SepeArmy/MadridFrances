@@ -79,6 +79,15 @@ public class GameManager : MonoBehaviour
 
                 break;
             // *****************************************************************
+            case GameStates.Inventario_Chat:
+
+                break;
+            // *****************************************************************
+            case GameStates.Blocking:
+                
+
+                break;
+            // *****************************************************************
             case GameStates.ObjectOptions:
 
                 break;
@@ -104,6 +113,9 @@ public class GameManager : MonoBehaviour
             case GameStates.GameOver:
                 break;
             // *****************************************************************
+            case GameStates.Fake_Transition:
+                break;
+                // *****************************************************************
         }
         // *****************************************************************
     }
@@ -119,5 +131,8 @@ public enum GameStates
     Playing,
     Inventory,
     FinalLevel,
-    GameOver
+    GameOver,
+    Blocking,
+    Inventario_Chat,
+    Fake_Transition
 }

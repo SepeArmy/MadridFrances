@@ -78,7 +78,7 @@ public class ObjectText : MonoBehaviour
             else
             {
                 dialogo.SetActive(false);
-                GameManager.THIS.actualNPC = null;
+                GameManager.THIS.actualNPC = null;              
                 GameManager.THIS.SetState(GameStates.Playing);
                 currentPhrase = 0;
             }

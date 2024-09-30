@@ -42,29 +42,36 @@ public class NPCControl : MonoBehaviour
         else if (PlayerDataManager.THIS.checkpoints[checkpointNeeded] && PlayerDataManager.THIS.checkpoints[ownCheckpoint])
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
-            GetComponent<NPCText>().StartNPCText(2);
+           
             if (GameManager.THIS.nombreNPC == "Niña")
             {
-                Inventario.THIS.objetos[1].SetActive(false);
-                //ir a la variable "objeto cogible" de la pelota y activarlo
-                objectos = GameObject.Find("Pelota");
-                objectos.GetComponent<Object>().objectoCogible = true;
+                GetComponent<NPCText>().StartNPCText(2);
+
+            }
+            if(GameManager.THIS.nombreNPC == "Fan")
+            {
+                GetComponent<NPCText>().StartNPCText(2);
 
             }
 
         }      
+        else if (PlayerDataManager.THIS.checkpoints[ownCheckpoint])
+        {
+            GameManager.THIS.SetState(GameStates.NPC_Chat);
+            GetComponent<NPCText>().StartNPCText(3);
+        }
         else if (PlayerDataManager.THIS.checkpoints[checkpointNeeded])
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(1);
-            
-            if(GameManager.THIS.nombreNPC == "Fan")
+            /*if (GameManager.THIS.nombreNPC == "Fan")
             {
-                //print("Dar bigote");
-                Inventario.THIS.objetos[2].SetActive(false);
+                GetComponent<NPCText>().StartNPCText(2);
 
-            }
-            PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+            }*/
+
+
+            //PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
         }
         else
         {
