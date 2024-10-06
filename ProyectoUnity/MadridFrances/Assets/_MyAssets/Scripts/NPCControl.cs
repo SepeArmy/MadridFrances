@@ -37,22 +37,32 @@ public class NPCControl : MonoBehaviour
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(3);
+            
+            
         }
 
         else if (PlayerDataManager.THIS.checkpoints[checkpointNeeded] && PlayerDataManager.THIS.checkpoints[ownCheckpoint])
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
-           
-            if (GameManager.THIS.nombreNPC == "Niña")
+
+            GetComponent<NPCText>().StartNPCText(2);
+            if (GameManager.THIS.actualNPC.name == "Vieja")
+            {
+                Debug.Log("Obtienes el billete");
+                Inventario.THIS.objetos[4].SetActive(true);
+                PlayerDataManager.THIS.checkpoints[12] = true;
+                PlayerDataManager.THIS.checkpoints[checkpointNeeded] = false;
+            }
+            /*if (GameManager.THIS.actualNPC.name == "Niña")
             {
                 GetComponent<NPCText>().StartNPCText(2);
 
-            }
-            if(GameManager.THIS.nombreNPC == "Fan")
+            }*/
+            /*if(GameManager.THIS.nombreNPC == "Fan")
             {
                 GetComponent<NPCText>().StartNPCText(2);
 
-            }
+            }*/
 
         }      
         else if (PlayerDataManager.THIS.checkpoints[ownCheckpoint])
@@ -64,11 +74,7 @@ public class NPCControl : MonoBehaviour
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(1);
-            /*if (GameManager.THIS.nombreNPC == "Fan")
-            {
-                GetComponent<NPCText>().StartNPCText(2);
-
-            }*/
+            
 
 
             //PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
@@ -77,8 +83,21 @@ public class NPCControl : MonoBehaviour
         {
             GameManager.THIS.SetState(GameStates.NPC_Chat);
             GetComponent<NPCText>().StartNPCText(0);
+            if (GameManager.THIS.actualNPC.name == "Fan")
+            {
+
+                PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+
+            }
+            if (GameManager.THIS.actualNPC.name == "Vieja")
+            {
+
+                PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+
+            }
+
         }
-        ticket();
+        
         Gazpacho();
         ConjuntoCromo();
     }
@@ -92,35 +111,27 @@ public class NPCControl : MonoBehaviour
     }
     public void Gazpacho()
     {
-        if (GameManager.THIS.nombreNPC == "Baity")
+        if (GameManager.THIS.actualNPC.name == "Baity")
         {
             Inventario.THIS.objetos[5].SetActive(true);
+            PlayerDataManager.THIS.checkpoints[checkpointNeeded] = true;
         }
 
             
     }
     public void ConjuntoCromo()
     {
-        if (GameManager.THIS.nombreNPC == "Fan")
+        if ((GameManager.THIS.actualNPC.name == "Fan") && (PlayerDataManager.THIS.checkpoints[13] == true))
         {
-            //print("Es el fan");
+            print("Es el fan");
             PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+            ownCheckpoint = 18;
+            PlayerDataManager.THIS.checkpoints[ownCheckpoint] = true;
+
         }
-       
+
     }
-    public void ticket()
-    {
-        if(GameManager.THIS.nombreNPC == "Vieja")
-        {
-            if ((PlayerDataManager.THIS.checkpoints[ownCheckpoint] == true) && (PlayerDataManager.THIS.checkpoints[checkpointNeeded] == true))
-            {
-                Debug.Log("Obtienes el billete");
-                Inventario.THIS.objetos[4].SetActive(true);
-                PlayerDataManager.THIS.checkpoints[12] = true;
-            }
-        }
-        
-    }
+    
 
 
    

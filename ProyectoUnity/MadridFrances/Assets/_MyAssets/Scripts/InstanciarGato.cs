@@ -23,6 +23,7 @@ public class InstanciarGato : MonoBehaviour
         {
             Instantiate(gato, instanciador.position, instanciador.rotation);
             instanciado = true;
+            
         }
     }
 }

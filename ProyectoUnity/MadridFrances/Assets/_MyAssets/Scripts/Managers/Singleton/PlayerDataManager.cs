@@ -27,7 +27,8 @@ public class PlayerDataManager : MonoBehaviour
     checkpoint_TirarPelota          = 15;
     checkpoint_bigote               = 16;
     checkpoint_cogerBigote          = 17;
-    checkpoint_darCromo             = 18;*****
+    checkpoint_despuesFan           = 18;
+    
 
 
 

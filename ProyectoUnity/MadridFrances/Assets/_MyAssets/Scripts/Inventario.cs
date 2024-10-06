@@ -59,6 +59,7 @@ public class Inventario : MonoBehaviour
 
        if (GameManager.THIS.state == GameStates.Inventario_Chat)
        {
+           
             objetos[1].SetActive(false);
             pelota = GameObject.Find("Pelota");
             pelota.GetComponent<Object>().objectoCogible = true;
@@ -66,8 +67,8 @@ public class Inventario : MonoBehaviour
             GameManager.THIS.actualNPC = actualNPC;      
             GameManager.THIS.SetState(GameStates.NPC_Chat);      
             GameObject.Find("Niña").GetComponent<NPCText>().StartNPCText(4);
-            PlayerDataManager.THIS.checkpoints[18] = true;
-            PlayerDataManager.THIS.checkpoints[5] = false;
+            PlayerDataManager.THIS.checkpoints[13] = false;
+            
             transform.GetChild(0).gameObject.SetActive(false);
 
 
@@ -85,19 +86,20 @@ public class Inventario : MonoBehaviour
             GameManager.THIS.actualNPC = actualNPC;
 
             GameManager.THIS.SetState(GameStates.NPC_Chat);
+            PlayerDataManager.THIS.checkpoints[18] = false;
 
 
             GameObject fan = GameObject.Find("Fan");
-            print(fan);
+            
             Component[] allComponents = fan.GetComponents<Component>();
 
             // Iteramos sobre todos los componentes y los mostramos en consola
-            foreach (Component comp in allComponents)
+            /*foreach (Component comp in allComponents)
             {
                 Debug.Log(comp.GetType().Name); // Muestra el tipo de componente en consola
             }
             NPCText texto = fan.GetComponent<NPCText>();
-            print(texto);
+            print(texto);*/
             
             GameObject.Find("Fan").GetComponent<NPCText>().StartNPCText(4);
             transform.GetChild(0).gameObject.SetActive(false);

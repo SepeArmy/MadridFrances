@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -10,7 +11,8 @@ public class Bloqueos : MonoBehaviour
 {
     public bool ID_1;
     public bool ID_2;
-    public GameObject opcionesbloqueo2;
+    public bool ID_3;
+    public GameObject opcionesbloqueo;
     public GameObject negroFake;
     public Transform tp_Target;
     public int transition_Time;
@@ -30,13 +32,18 @@ public class Bloqueos : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         collider.GetComponent<PlayerControl>().bloqueo_Actual = gameObject;
+        
 
-        if(ID_1 == true)
+        print(ID_1);
+        print(ID_2);
+        print(ID_3);
+
+        if (ID_1 == true)
         {
             print("Puedo pasar?");
             GameManager.THIS.SetState(GameStates.Blocking);
             print("comprobando checkpoint");
-            if (PlayerDataManager.THIS.checkpoints[2] == true)
+            if (PlayerDataManager.THIS.checkpoints[2] == true) //has cogido el macarron??
             {
                 print("puedes pasar");
                 GameManager.THIS.SetState(GameStates.Playing);
@@ -47,7 +54,7 @@ public class Bloqueos : MonoBehaviour
                 gameObject.GetComponent<BloqueoText>().StartObjectText(0);
             }
         }
-        else if (ID_2 == true) 
+        if (ID_2 == true) 
         {
 
             print("Puedo pasar");
@@ -55,12 +62,12 @@ public class Bloqueos : MonoBehaviour
             print("comprobando ticket"); //checkpoint 12
             //si tienes el ticket: preguntar por viajar
             //si no tienes el ticket: no puedes viajar
-            if (PlayerDataManager.THIS.checkpoints[12] == true) 
+            if (PlayerDataManager.THIS.checkpoints[12] == true)     
             {
                 //GameManager.THIS.SetState(GameStates.Fake_Transition);
 
                 print("quieres viajar?");
-                opcionesbloqueo2.SetActive(true);
+                opcionesbloqueo.SetActive(true);
 
 
             }
@@ -69,6 +76,18 @@ public class Bloqueos : MonoBehaviour
                 gameObject.GetComponent<BloqueoText>().StartObjectText(0);
 
             }
+
+        }
+        else if (ID_3 == true)
+        {
+            print("Puedo pasar");
+            GameManager.THIS.SetState(GameStates.Blocking);
+            print("comprobando ticket"); //checkpoint 12
+            //si tienes el ticket: preguntar por viajar
+            //si no tienes el ticket: no puedes viajar
+            print("quieres viajar?");
+            opcionesbloqueo.SetActive(true);
+            print(opcionesbloqueo);
 
         }
     }
@@ -84,7 +103,8 @@ public class Bloqueos : MonoBehaviour
     public void  SIviajar()
     { 
        print("Viajas");
-       opcionesbloqueo2.SetActive(false);
+       opcionesbloqueo.SetActive(false);
+        //print(opcionesbloqueo);
         //GameManager.THIS.SetState(GameStates.Fake_Transition);
         StartCoroutine(Transición_Fake());
 
@@ -94,7 +114,9 @@ public class Bloqueos : MonoBehaviour
     public void  NOviajar()
     {
         gameObject.GetComponent<BloqueoText>().StartObjectText(1);
-        opcionesbloqueo2.SetActive(false);
+        opcionesbloqueo.SetActive(false);
+        print(opcionesbloqueo);
+
         //GameManager.THIS.SetState(GameStates.Playing);
 
 
@@ -114,6 +136,7 @@ public class Bloqueos : MonoBehaviour
         NavMeshAgent playerAgent = GameObject.Find("Player").GetComponent<NavMeshAgent>();
         Transform playerTr = GameObject.Find("Player").transform;
         playerAgent.SetDestination(tp_Target.position);
+        print(tp_Target.position);
 
 
         player_Position.position = tp_Target.position;       

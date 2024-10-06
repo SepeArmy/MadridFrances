@@ -154,6 +154,10 @@ public class PlayerControl : MonoBehaviour
                 {
                     ClickPinceles(hit.transform);
                 }
+                if (hit.transform.CompareTag("Palomas"))
+                {
+                    ClickPalomas(hit.transform);
+                }
 
             }
 
@@ -188,8 +192,8 @@ public class PlayerControl : MonoBehaviour
 
     void ClickNPC(Transform npc)
     {
-        GameManager.THIS.actualNPC = npc.parent;//coge el npc
-        GameManager.THIS.nombreNPC = npc.name;
+        GameManager.THIS.actualNPC = npc;//coge el npc
+        //GameManager.THIS.nombreNPC = GameManager.THIS.actualNPC.name;
         //print(npc.name);
         GameManager.THIS.actualNPC.GetComponent<NPCControl>().NPCAction();
         
@@ -197,7 +201,7 @@ public class PlayerControl : MonoBehaviour
 
     void ClickObject(Transform _object)
     {
-        
+        print("bigote");
         objectSelected = _object;
         nombreObjeto = _object.name;      
         GameManager.THIS.SetState(GameStates.ObjectOptions);
@@ -214,6 +218,19 @@ public class PlayerControl : MonoBehaviour
           }
         
         
+    }
+    void ClickPalomas(Transform _palomas)
+    {
+        print("bigote");
+        objectSelected = _palomas;
+        nombreObjeto = _palomas.name;
+        GameManager.THIS.SetState(GameStates.ObjectOptions);
+        objectOptions.transform.position = Input.mousePosition;
+        objectOptions2.transform.position = Input.mousePosition;
+
+        objectOptions2.SetActive(true);
+
+
     }
     void ClickPinceles(Transform _pinceles)
     {
@@ -298,6 +315,7 @@ public class PlayerControl : MonoBehaviour
         //objectSelected.GetChild(0).gameObject.SetActive(false);
         PlayerDataManager.THIS.checkpoints[2] = false;
         PlayerDataManager.THIS.checkpoints[3] = true;
+        //PlayerDataManager.THIS.checkpoints[4] = false;
 
 
 

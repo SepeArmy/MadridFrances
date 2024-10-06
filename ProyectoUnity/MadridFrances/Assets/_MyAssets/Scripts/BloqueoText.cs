@@ -159,6 +159,7 @@ public class BloqueoText : MonoBehaviour
         
 
     }
+    
 
     void Stop_Npc_LineChat()
     {

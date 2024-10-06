@@ -293,13 +293,14 @@ GameObject:
   - component: {fileID: 103874889}
   - component: {fileID: 103874888}
   - component: {fileID: 103874887}
+  - component: {fileID: 103874890}
   m_Layer: 0
   m_Name: Vieja
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &103874887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,8 +315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualText: []
   actualTextouner: 
-  faceNPC: {fileID: 0}
-  faceProta: {fileID: 0}
+  faceNPC: {fileID: 1780069961}
+  faceProta: {fileID: 2027099791}
   npcCheckpoints: 0
   dialogo: {fileID: 1224263241}
   phrase: {fileID: 1818462097}
@@ -326,19 +327,19 @@ MonoBehaviour:
   - "Perdone se\xF1ora, \xBFha visto a un gato con boina y bigote pasando por aqui?"
   - ".... vayase se\xF1or cuesta, ejem ejem"
   text1:
+  - ".... vayase se\xF1or cuesta, ejem ejem"
+  text2:
   - EEEH!!!
   - Que la he visto
   - No se haga la loca
   - "\xBFMe quiere decir si ha visto al madito gato? "
+  - "\xBFMe quiere decir si ha visto al madito gato? "
   - 'Quesque se, quesque se '
-  - "como dice peque\xF1a"
   - "Que s\xED, que no se haga la loca"
   - 'Que si ha visto al gatooo, al gato con boina y bigote '
   - Aaah ya
   - si si, digo... wi wi
   - "Se meti\xF3 por ese callej\xF3n a la izquierda de la Casa de Correos"
-  text2:
-  - ".... vayase se\xF1or cuesta, ejem ejem"
   text3:
   - ".... vayase se\xF1or cuesta, ejem ejem"
   text4:
@@ -346,11 +347,11 @@ MonoBehaviour:
   - "\xA1Eeey!"
   - "S\xED, t\xFA, despierta."
   - "Vaya, ya has vuelto en t\xED, me estaba empezando a preocupar."
-  textouner0: 
-  textouner1: 
-  textouner2: 
-  textouner3: 
-  textouner4: 
+  textouner0: 0000000000000000
+  textouner1: 00000000
+  textouner2: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  textouner3: 00000000
+  textouner4: 00000000000000000000000000000000
 --- !u!114 &103874888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,13 +383,36 @@ Transform:
   m_GameObject: {fileID: 103874886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.1, y: 0, z: 0.2}
+  m_LocalPosition: {x: 15.1, y: 1.12, z: -4.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1630537337}
   m_Father: {fileID: 2027281638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &103874890
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103874886}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5331044
+  m_Height: 2.2637386
+  m_Direction: 1
+  m_Center: {x: -0.03310442, y: -0.036961794, z: 0}
 --- !u!1 &126618518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,9 +1163,8 @@ GameObject:
   m_Component:
   - component: {fileID: 361249194}
   - component: {fileID: 361249196}
-  - component: {fileID: 361249195}
   m_Layer: 0
-  m_Name: Fan
+  m_Name: FAN
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,29 +1185,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1405001910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &361249195
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361249193}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &361249196
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1250,6 +1250,7 @@ GameObject:
   - component: {fileID: 378779072}
   - component: {fileID: 378779074}
   - component: {fileID: 378779073}
+  - component: {fileID: 378779075}
   m_Layer: 0
   m_Name: Baity
   m_TagString: NPC
@@ -1287,8 +1288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualText: []
   actualTextouner: 
-  faceNPC: {fileID: 0}
-  faceProta: {fileID: 0}
+  faceNPC: {fileID: 1780069961}
+  faceProta: {fileID: 2027099791}
   npcCheckpoints: 0
   dialogo: {fileID: 1224263241}
   phrase: {fileID: 1818462097}
@@ -1296,6 +1297,12 @@ MonoBehaviour:
   textFastSpeed: 0.04
   textSlowSpeed: 0.1
   text0:
+  - Bojour Madmuasel
+  text1:
+  - Oh,
+  text2:
+  - Bojour Madmuasel
+  text3:
   - Perdona has visto a un gato con boina y bigote pasar por aqui?
   - AAA!! Vaaamooss!!
   - Que? ... po na aki tamo con mi primillo chico, de turisteo vaya
@@ -1306,32 +1313,13 @@ MonoBehaviour:
   - ...
   - 'Mira por ser tu, te regalo esto que es '
   - la polla (obtiene gazpacho andalu)
-  text1:
-  - Oh,
-  - Mondie, pardie, baguet
-  - es un autentico cuadro de Antoni Lopez
-  - 'Oh, monseri, madame '
-  - 'si andais buscando un gato con boina y bigote acaba de pasar  '
-  - Donde??!!!
-  - Al.... callejon
-  text2:
-  - Hola
-  - Hola
-  - Hola
-  - Hola
-  - Hola
-  - Hola
-  - Hola
-  - Hola
-  text3:
-  - "\xA1Bonj\xFA madmuasel!"
   text4:
   - Bonjour!
   textouner0: 
-  textouner1: 
-  textouner2: 
-  textouner3: 
-  textouner4: 
+  textouner1: 00000000
+  textouner2: 00000000
+  textouner3: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  textouner4: 00000000
 --- !u!114 &378779074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,6 +1342,29 @@ MonoBehaviour:
   jeanPierreAction: {fileID: 0}
   billete: {fileID: 0}
   objectos: {fileID: 0}
+--- !u!136 &378779075
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378779071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7746093
+  m_Height: 3.3505213
+  m_Direction: 1
+  m_Center: {x: 0.58754873, y: 1.1752607, z: 0.3129394}
 --- !u!4 &382545213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5954026913236498256, guid: a837dcef6aed86849aad1f2f2c005a34, type: 3}
@@ -1778,13 +1789,14 @@ GameObject:
   - component: {fileID: 606182093}
   - component: {fileID: 606182095}
   - component: {fileID: 606182094}
+  - component: {fileID: 606182096}
   m_Layer: 0
   m_Name: "Antonio L\xF3pez"
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606182093
 Transform:
   m_ObjectHideFlags: 0
@@ -1867,6 +1879,29 @@ MonoBehaviour:
   jeanPierreAction: {fileID: 0}
   billete: {fileID: 0}
   objectos: {fileID: 0}
+--- !u!136 &606182096
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606182092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6962371
+  m_Height: 4.3304853
+  m_Direction: 1
+  m_Center: {x: -0.823771, y: 1.6652427, z: -0.9802623}
 --- !u!1 &609187320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8847139481851656732, guid: b9d10fcb40701ec4493e57e1b184c7b1, type: 3}
@@ -2056,7 +2091,6 @@ GameObject:
   m_Component:
   - component: {fileID: 761117518}
   - component: {fileID: 761117520}
-  - component: {fileID: 761117519}
   m_Layer: 0
   m_Name: Baity
   m_TagString: NPC
@@ -2079,29 +2113,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 378779072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &761117519
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761117517}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &761117520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2377,6 +2388,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7107250132099599922, guid: 3803c06751b6b954da9d2e5dfb8a2578, type: 3}
       propertyPath: 'checkpoints.Array.data[1]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107250132099599922, guid: 3803c06751b6b954da9d2e5dfb8a2578, type: 3}
+      propertyPath: 'checkpoints.Array.data[5]'
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7107250132099599922, guid: 3803c06751b6b954da9d2e5dfb8a2578, type: 3}
@@ -2695,13 +2710,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1004324680}
   - component: {fileID: 1004324681}
+  - component: {fileID: 1004324683}
+  - component: {fileID: 1004324682}
   m_Layer: 0
   m_Name: Palomas
   m_TagString: Palomas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1004324680
 Transform:
   m_ObjectHideFlags: 0
@@ -2740,6 +2757,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1004324682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004324679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7f218cbd184114eb675e90c3a1550f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Palomas
+  objectID: 0
+  owncheckpoint: 0
+  image: {fileID: 0}
+  verText: 
+  cojerText: 
+  objectoCogible: 0
+--- !u!114 &1004324683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004324679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c840fc1385ef4624b8f6d8cef345ca20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  languageText: []
+  dialogo: {fileID: 1224263241}
+  phrase: {fileID: 1818462097}
+  currentPhrase: 0
+  textFastSpeed: 0.04
+  textSlowSpeed: 0
+  text0:
+  - Unas palomas
+  text1:
+  - No puedo
+  text2:
+  - No puedo
+  text3:
+  - No puedo
+  text4:
+  - No puedo
 --- !u!1 &1025108200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1094602472202919402, guid: a9e7eecce26d33942a7c667ba6d0e0ad, type: 3}
@@ -3138,7 +3202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1085262396}
   - component: {fileID: 1085262398}
-  - component: {fileID: 1085262397}
   m_Layer: 0
   m_Name: Jampierre
   m_TagString: NPC
@@ -3161,29 +3224,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1722316150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1085262397
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085262395}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1085262398
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3637,6 +3677,7 @@ GameObject:
   - component: {fileID: 1231282852}
   - component: {fileID: 1231282851}
   - component: {fileID: 1231282850}
+  - component: {fileID: 1231282853}
   m_Layer: 0
   m_Name: "Ni\xF1a"
   m_TagString: NPC
@@ -3724,13 +3765,36 @@ Transform:
   m_GameObject: {fileID: 1231282849}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.3, y: 0, z: 26.1}
+  m_LocalPosition: {x: 18.45, y: 1.72, z: -9.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1793340913}
   m_Father: {fileID: 2027281638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1231282853
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231282849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6273813
+  m_Height: 3.599025
+  m_Direction: 1
+  m_Center: {x: 0.035191536, y: -0.047125936, z: 0}
 --- !u!1001 &1243824776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4127,13 +4191,14 @@ GameObject:
   - component: {fileID: 1405001910}
   - component: {fileID: 1405001912}
   - component: {fileID: 1405001911}
+  - component: {fileID: 1405001913}
   m_Layer: 0
   m_Name: Fan
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405001910
 Transform:
   m_ObjectHideFlags: 0
@@ -4225,6 +4290,29 @@ MonoBehaviour:
   jeanPierreAction: {fileID: 0}
   billete: {fileID: 0}
   objectos: {fileID: 0}
+--- !u!136 &1405001913
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405001909}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7820153
+  m_Height: 3.3765361
+  m_Direction: 1
+  m_Center: {x: 0.28201532, y: 1.5606829, z: 0}
 --- !u!4 &1480837262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5954026913236498256, guid: a837dcef6aed86849aad1f2f2c005a34, type: 3}
@@ -4909,7 +4997,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1630537337}
   - component: {fileID: 1630537339}
-  - component: {fileID: 1630537338}
   m_Layer: 0
   m_Name: Vieja
   m_TagString: NPC
@@ -4926,35 +5013,12 @@ Transform:
   m_GameObject: {fileID: 1630537336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.08, z: -4.21}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 103874889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1630537338
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630537336}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.24
-  m_Direction: 1
-  m_Center: {x: -0.18, y: 0, z: 0}
 --- !u!212 &1630537339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5175,6 +5239,7 @@ GameObject:
   - component: {fileID: 1722316150}
   - component: {fileID: 1722316151}
   - component: {fileID: 1722316152}
+  - component: {fileID: 1722316153}
   m_Layer: 0
   m_Name: Jampierre
   m_TagString: NPC
@@ -5273,6 +5338,29 @@ MonoBehaviour:
   textouner2: 01000000
   textouner3: 01000000
   textouner4: 01000000
+--- !u!136 &1722316153
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722316149}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7914983
+  m_Height: 3.9575188
+  m_Direction: 1
+  m_Center: {x: 0.0082114935, y: 1.4787594, z: 0}
 --- !u!1 &1746339088 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fdfd64ba48e2a6c449a8c74d2033842a, type: 3}
@@ -5509,9 +5597,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1793340913}
   - component: {fileID: 1793340915}
-  - component: {fileID: 1793340914}
   m_Layer: 0
-  m_Name: "Ni\xF1a"
+  m_Name: "NI\xD1A"
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5526,35 +5613,12 @@ Transform:
   m_GameObject: {fileID: 1793340912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.24, y: 1.056, z: -35.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1231282852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1793340914
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1793340912}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1793340915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5598,7 +5662,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6591baa12154cba4399a638d766a15e3, type: 3}
+  m_Sprite: {fileID: -386562882, guid: fc345bdcac5a4ae428daa4c003b2ab5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6132,7 +6196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1925368075}
   - component: {fileID: 1925368077}
-  - component: {fileID: 1925368076}
   m_Layer: 0
   m_Name: Antonio
   m_TagString: NPC
@@ -6155,29 +6218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 606182093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1925368076
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925368074}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1925368077
 SpriteRenderer:
   m_ObjectHideFlags: 0

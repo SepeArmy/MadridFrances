@@ -105,6 +105,7 @@ public class NPCText : MonoBehaviour
             faceNPC.gameObject.SetActive(false);
             //faceProta.gameObject.SetActive(true);
 
+            
             currentPhrase++;
             if (currentPhrase < actualText.Length)
             {
@@ -113,7 +114,36 @@ public class NPCText : MonoBehaviour
             }
             else
             {
-                if (PlayerDataManager.THIS.checkpoints[1])
+                print(GameManager.THIS.actualNPC.name);
+                print(currentPhrase);
+                print(actualText);
+                if ((GameManager.THIS.actualNPC.name == "Niña") && (currentPhrase == 1) && (actualText == text2))
+                {
+                   
+
+                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
+                    dialogo.SetActive(false);
+                    faceNPC.gameObject.SetActive(false);
+                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
+                    currentPhrase = 0;
+
+
+
+                }
+                else if ((GameManager.THIS.actualNPC.name == "Fan") && (currentPhrase == 1) && (actualText == text2))
+                {
+
+                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
+                    dialogo.SetActive(false);
+                    faceNPC.gameObject.SetActive(false);
+                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
+                    currentPhrase = 0;
+
+
+
+                }
+
+                else if (PlayerDataManager.THIS.checkpoints[1])
                 {
                     dialogo.SetActive(false);
                     faceNPC.gameObject.SetActive(false);
@@ -126,7 +156,7 @@ public class NPCText : MonoBehaviour
                     GetComponent<NPCControl>().jeanPierreAction.SetActive(true);
                     currentPhrase = 0;
                 }                               
-                else
+                else 
                 {
                     faceNPC.gameObject.SetActive(false);
                     //faceProta.gameObject.SetActive(false);
@@ -136,22 +166,8 @@ public class NPCText : MonoBehaviour
                     GameManager.THIS.SetState(GameStates.Playing);
                     currentPhrase = 0;
                 }
-                if ((GameManager.THIS.nombreNPC == "Niña") && (currentPhrase == 0) && (actualText == text2))
-                {
 
-                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
-                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
-
-
-                }
-                if ((GameManager.THIS.nombreNPC == "Fan") && (currentPhrase == 0) && (actualText == text2))
-                {
-
-                    GameObject.Find("Inventario").transform.GetChild(0).gameObject.SetActive(true);
-                    GameManager.THIS.SetState(GameStates.Inventario_Chat);
-
-
-                }
+                
 
             }
         }
